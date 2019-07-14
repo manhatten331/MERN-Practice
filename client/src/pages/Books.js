@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../components/Grid"
+import { Col, Row, Container } from "../components/Grid";
+import Jumbotron from "../components/Jumpbotron";
 
 class Books extends Component {
     state = {
@@ -11,10 +12,14 @@ class Books extends Component {
             <Container>
             <Row>
                 <Col>
-                <h1>Hello World</h1>
+                <Jumbotron>
+                    <h1>What is your favorite movie?</h1>
+                </Jumbotron>
                 </Col>
                 <Col>
-                <h1>Hello Manzell</h1>
+                <Jumbotron>
+                    <h1>List of Movies</h1>
+                </Jumbotron>
                 </Col>
             </Row>
         </Container>
