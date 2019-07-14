@@ -28,7 +28,7 @@ export function FormBtn(props) {
 export function Border({children}) {
     return (
         <div className="border border-dark rounded"
-        style={{ padding: 20, paddingBottom: 45}}>
+        style={{ padding: 10, paddingBottom: 45}}>
             {children}
         </div>
     );
