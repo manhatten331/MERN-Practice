@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3001;
-// add routes here
+const routes = require("./routes");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
 
-// allow app to use our routes for the view
+app.use(routes);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/MERN-Practice");
 

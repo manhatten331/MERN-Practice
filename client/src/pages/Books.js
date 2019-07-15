@@ -1,11 +1,23 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumpbotron";
-import { Input, TextArea, FormBtn, Border } from "../components/Form"
+import { Input, TextArea, FormBtn, Border } from "../components/Form";
+import API from "../utils/API";
+import { List, ListItem } from "../components/List"
 
 class Books extends Component {
     state = {
         books: []
+    };
+
+    componentDidMount() {
+        this.loadMovies();
+    }
+
+    loadMovies = () => {
+        API.getMovies()
+            .then(res => this.setState({ books: res.data }))
+            .catch(err => console.log(err));
     };
 
     render() {
@@ -27,6 +39,9 @@ class Books extends Component {
                         <Jumbotron>
                             <h1>List of Movies</h1>
                         </Jumbotron>
+                        <List>
+                            
+                        </List>
                     </Col>
                 </Row>
             </Container>
