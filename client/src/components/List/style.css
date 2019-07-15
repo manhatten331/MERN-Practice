@@ -1,0 +1,9 @@
+.list-overflow-container {
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.list-overflow-container li a {
+    color: black;
+}

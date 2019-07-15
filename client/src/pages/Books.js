@@ -7,7 +7,7 @@ import { List, ListItem } from "../components/List"
 
 class Books extends Component {
     state = {
-        books: []
+        movies: []
     };
 
     componentDidMount() {
@@ -16,7 +16,7 @@ class Books extends Component {
 
     loadMovies = () => {
         API.getMovies()
-            .then(res => this.setState({ books: res.data }))
+            .then(res => this.setState({ movies: res.data }))
             .catch(err => console.log(err));
     };
 
@@ -39,9 +39,21 @@ class Books extends Component {
                         <Jumbotron>
                             <h1>List of Movies</h1>
                         </Jumbotron>
-                        <List>
-                            
-                        </List>
+                        {this.state.movies.length ? (
+                            <List>
+                                {this.state.movies.map(movie => (
+                                    <ListItem key={movie._id}>
+                                        <a href={"/movies/" + movie._id}>
+                                            <strong>
+                                                {movie.title} Genre: {movie.author}
+                                            </strong>
+                                        </a>
+                                    </ListItem>
+                                ))}
+                            </List>
+                        ) : (
+                            <h3>No results</h3>
+                        )}
                     </Col>
                 </Row>
             </Container>
