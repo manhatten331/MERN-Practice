@@ -36,9 +36,12 @@ class Books extends Component {
             API.saveMovie({
                 title: this.state.title,
                 genre: this.state.genre,
-                description: this.state.description
+                // description: this.state.description
             })
-                .then(res => this.loadMovies())
+                .then(res => {
+                    console.log(res);
+                    this.loadMovies()
+                })
                 .catch(err => console.log(err));
         }
     }

@@ -5,5 +5,4 @@ router.route("/")
     .get(movieController.findAll)
     .post(movieController.create);
 
-
 module.exports = router;

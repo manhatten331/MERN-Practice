@@ -5,6 +5,6 @@ export default {
         return axios.get("/api/movies");
     },
     saveMovie: function(movieData) {
-        return axios.post("/api/books", movieData);
+        return axios.post("/api/movies", movieData);
     }
 }
