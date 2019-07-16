@@ -7,7 +7,10 @@ import { List, ListItem } from "../components/List"
 
 class Books extends Component {
     state = {
-        movies: []
+        movies: [],
+        title: "",
+        genre: "",
+        description: ""
     };
 
     componentDidMount() {
@@ -16,9 +19,29 @@ class Books extends Component {
 
     loadMovies = () => {
         API.getMovies()
-            .then(res => this.setState({ movies: res.data }))
+            .then(res => this.setState({ movies: res.data, title: "", genre: "", description: "" }))
             .catch(err => console.log(err));
     };
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        if (this.state.title && this.state.genre) {
+            API.saveMovie({
+                title: this.state.title,
+                genre: this.state.genre,
+                description: this.state.description
+            })
+                .then(res => this.loadMovies())
+                .catch(err => console.log(err));
+        }
+    }
 
     render() {
         return (
@@ -29,10 +52,29 @@ class Books extends Component {
                             <h1>What is your favorite movie?</h1>
                         </Jumbotron>
                         <Border>
-                            <Input name="Title" placeholder="Movie Title (Required)" />
-                            <Input name="Genre" placeholder="Movie Genre (Required)" />
-                            <TextArea name="Description" placeholder="Discription (Optional)" />
-                            <FormBtn>Submit</FormBtn>
+                            <Input
+                            value={this.state.title}
+                            onChange={this.handleInputChange} 
+                            name="title" 
+                            placeholder="Movie Title (Required)" 
+                            />
+                            <Input
+                            value={this.state.genre}
+                            onChange={this.handleInputChange} 
+                            name="genre" 
+                            placeholder="Movie Genre (Required)" 
+                            />
+                            <TextArea 
+                            value={this.state.description}
+                            onChange={this.handleInputChange}
+                            name="description" 
+                            placeholder="Discription (Optional)" 
+                            />
+                            <FormBtn
+                            disabled={!(this.state.title && this.state.genre)}
+                            onClick={this.handleFormSubmit}
+                            >Submit
+                            </FormBtn>
                         </Border>
                     </Col>
                     <Col>

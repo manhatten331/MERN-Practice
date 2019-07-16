@@ -15,8 +15,15 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/MERN-Practice");
+// mongoose.connect("mongodb://localhost/MERN-Practice", { useNewUrlParser: true })
 
-app.listen(PORT, function() {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/MERN-Practice", { useNewUrlParser: true },
+    function (error) {
+        if (error) {
+            console.log("Error creating connection" + error)
+        }
+    });
+
+app.listen(PORT, function () {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
