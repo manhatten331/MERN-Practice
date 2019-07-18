@@ -2,9 +2,11 @@ const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("./api");
 
+// All defined routes will be given the prefix "/api"
 router.use("/api", apiRoutes);
 
-router.use(function (req, res) {
+// If no routes are hit, run the react app
+router.get("*", function(req, res) {
     res.sendFile(path.join(__dirname, "../client/build/index.html"))
 });
 
