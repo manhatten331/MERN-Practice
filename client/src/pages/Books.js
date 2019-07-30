@@ -90,7 +90,7 @@ class Books extends Component {
                                     <ListItem key={movie._id}>
                                         <a href={"/movies/" + movie._id}>
                                             <strong>
-                                                {movie.title} Genre: {movie.author}
+                                                {movie.title} Genre: {movie.genre}
                                             </strong>
                                         </a>
                                     </ListItem>

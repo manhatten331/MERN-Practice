@@ -2,9 +2,9 @@ import axios from "axios";
 
 export default {
     getMovies: function() {
-        return axios.get("/api/movies");
+        return axios.get("/api/movie");
     },
     saveMovie: function(movieData) {
-        return axios.post("/api/movies", movieData);
+        return axios.post("/api/movie", movieData);
     }
 }

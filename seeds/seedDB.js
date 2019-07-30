@@ -19,6 +19,13 @@ const movieSeed = [
         description:
             "Three teens about to gradute highschool try to wrap up there year by trying to impress their crushes",
         date: new Date(Date.now())
+    },
+    {
+        title: "The Book of Eli",
+        genre: "Thriller Action Adventure",
+        description:
+            "In a post-apocolyptic world one man has task from God to fulfill he will do it by any means necessary.",
+        date: new Date(Date.now())
     }
 ];
 
