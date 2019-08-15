@@ -4,6 +4,7 @@ import Jumbotron from "../components/Jumpbotron";
 import { Input, TextArea, FormBtn, Border } from "../components/Form";
 import API from "../utils/API";
 import { List, ListItem } from "../components/List"
+import DeleteBtn from "../components/DeleteBtn"
 
 class Books extends Component {
     state = {
@@ -44,6 +45,12 @@ class Books extends Component {
                 })
                 .catch(err => console.log(err));
         }
+    }
+
+    deleteMovie = id => {
+        API.deleteMovie(id)
+            .then(res => this.loadMovies())
+            .catch(err => console.log(err));
     }
 
     render() {
@@ -93,6 +100,7 @@ class Books extends Component {
                                                 {movie.title} Genre: {movie.genre}
                                             </strong>
                                         </a>
+                                        <DeleteBtn onClick={() => this.deleteMovie(movie._id)} />
                                     </ListItem>
                                 ))}
                             </List>

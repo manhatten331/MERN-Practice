@@ -6,5 +6,8 @@ export default {
     },
     saveMovie: function(movieData) {
         return axios.post("/api/movie", movieData);
-    }
+    },
+    deleteMovie: function(id) {
+        return axios.delete("/api/movie/" + id)
+    },
 }
