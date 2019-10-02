@@ -39,6 +39,11 @@ class Books extends Component {
                 genre: this.state.genre,
                 // description: this.state.description
             })
+            this.setState({
+                title: "",
+                genre: "",
+                description: ""
+            })
                 .then(res => {
                     console.log(res);
                     this.loadMovies()
