@@ -15,7 +15,8 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(routes);
 
-mongoose.connect("mongodb://localhost/MERN-Practice", { useNewUrlParser: true })
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/MERN-Practice";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
 
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/MERN-Practice", { useNewUrlParser: true },
 //     function (error) {
