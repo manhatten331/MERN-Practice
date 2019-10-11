@@ -82,7 +82,7 @@ class Books extends Component {
                             value={this.state.description}
                             onChange={this.handleInputChange}
                             name="description" 
-                            placeholder="Discription (Optional)" 
+                            placeholder="Description (Optional)" 
                             />
                             <FormBtn
                             disabled={!(this.state.title && this.state.genre)}
